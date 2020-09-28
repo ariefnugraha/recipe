@@ -1,6 +1,4 @@
 import React from 'react';
-
-
 import Index from './component/homepage/Index';
 
 function App() {

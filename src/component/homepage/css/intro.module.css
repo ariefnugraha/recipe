@@ -1,0 +1,11 @@
+.intro {
+    padding: 10vh 10vw;
+}
+
+.background {
+    margin: 0 auto;
+    width: 400px;
+    height: 400px;
+    background-color: #e63946;
+    border-radius: 50%;
+}

@@ -1,3 +1,44 @@
+.welcome {
+    background-image: url("../../../asset/welcome.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding: 20vh 10vw;
+    font-family: "Titillium Web", sans-serif;
+    height: 80vh;
+    color: #ffffff;
+}
+
 .title {
-    color: red;
+    font-family: "Amaranth", sans-serif;
+    text-transform: capitalize;
+}
+
+.subtitle {
+    text-transform: capitalize;
+}
+
+.form {
+    padding: 2vh 0;
+}
+
+.input {
+    box-sizing: border-box;
+    padding: 0 3vw;
+    width: 50%;
+    height: 50px;
+    border: none;
+    outline: none;
+}
+
+.btn {
+    padding: 0 3vw;
+    background-color: #e63946;
+    color:#ffffff;
+    font-weight: 600;
+    outline: none;
+    border: none;
+    height: 50px;
+    border-left: solid 2px #e63946;
+    cursor: pointer;
+    text-transform: capitalize;
 }

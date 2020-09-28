@@ -1,5 +1,5 @@
 .welcome {
-    background-image: url("../../../asset/welcome.jpg");
+    background-image: url("/asset/welcome.jpg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     padding: 20vh 10vw;

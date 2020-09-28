@@ -4,6 +4,7 @@ import {Container} from 'react-bootstrap';
 import Navigation from '../navigation/Navigation';
 import Welcome from './Welcome';
 import Intro from './Intro';
+import RandomRecipes from './RandomRecipes';
 
 const Index = () => {
     const styleContainer = {
@@ -16,6 +17,7 @@ const Index = () => {
             <Navigation />
             <Welcome />
             <Intro />
+            <RandomRecipes/>
         </Container>
     )
 }

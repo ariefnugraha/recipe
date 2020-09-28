@@ -1,6 +1,13 @@
 .intro {
     padding: 10vh 10vw;
+    font-family: "Tittilium Web", sans-serif;
+    text-transform: capitalize;
 }
+
+.illustration, .introContent {
+    margin: 5vh 0;
+}
+
 
 .background {
     margin: 0 auto;
@@ -8,4 +15,49 @@
     height: 400px;
     background-color: #e63946;
     border-radius: 50%;
+}
+
+.iconContainer {
+    position: relative;
+    top: 100px;
+    left: 5vw; 
+    width: 20vw;
+}
+
+.foodIcon {
+    text-align: center;
+    margin: 3vh auto;
+    padding: 1vh 1vw;
+}
+
+.cheese {
+    color: #fab649;
+}
+
+.bread {
+    color: #c59b7a;
+}
+
+.bacon {
+    color: #981a0f;
+}
+
+.carrot {
+    color: #e27726;
+}
+
+.title {
+    text-transform: capitalize;
+    font-family: "Amaranth", sans-serif;
+    margin-bottom: 5vh;
+}
+
+.makeIconContainer {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.knife, .spatula, .rolling, .mixer {
+    width: 100px;
+    height: 100px;
 }

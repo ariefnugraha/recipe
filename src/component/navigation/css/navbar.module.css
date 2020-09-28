@@ -1,0 +1,37 @@
+.navbar {
+    background-color: #e63946;
+    color: #ffffff;
+    font-family: "Titillium Web", sans-serif;
+    padding: 3vh 5vw;
+}
+
+.brand {
+    color: #ffffff;
+}
+
+.form {
+    width: 50%;
+    background-color: green;
+    margin: 0 auto;
+}
+
+.input {
+    box-sizing: border-box;
+    padding: 0 3vw;
+    width: 80%;
+    height: 50px;
+    border: none;
+    outline: none;
+}
+
+.btn {
+    width: 20%;
+    background-color: #ffffff;
+    color: #e63946;
+    font-weight: bold;
+    outline: none;
+    border: none;
+    height: 50px;
+    border-left: solid 2px #e63946;
+    cursor: pointer;
+}

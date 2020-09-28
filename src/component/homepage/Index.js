@@ -1,9 +1,13 @@
 import React from 'react';
 
+import Navigation from '../navigation/Navigation';
 import Welcome from './Welcome';
 const Index = () => {
     return (
-        <Welcome />
+        <React.Fragment>
+            <Navigation />
+            <Welcome />
+        </React.Fragment>
     )
 }
 

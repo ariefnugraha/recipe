@@ -1,0 +1,42 @@
+.searchResult {
+    padding: 10vh 10vw;
+    background-color: #e8e8e8;
+    font-family: "Tittilium Web", sans-serif;
+}
+
+.title {
+    font-family: "Amaranth", sans-serif;
+    background-color: #ffffff;
+    padding: 5vh 5vw;
+    border-radius: 10px;
+}
+
+.recipeItem {
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin: 2vh 0;
+    padding: 5vh 5vw;
+}
+
+.imageContainer img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.recipeTitle {
+    font-family: "Amaranth", sans-serif;
+}
+
+.stats {
+    margin: 5vh 0;
+    text-transform: capitalize;
+}
+
+.icon {
+    color: #e63946;
+}
+
+.recipeSummary {
+    font-size: 14px;
+    color: gray;
+}

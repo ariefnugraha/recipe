@@ -33,7 +33,7 @@ const RandomRecipes = () => {
                 margin: '3vh 0vw'
             }
 
-            const rupiahRate = 14901;
+            const rupiahRate = 15000;
             const servings = recipe.servings;
             let price = recipe.pricePerServing.toString();
             let newPrice = `${price.substr(0, 2)}.${price.substr(2, 2)}`;

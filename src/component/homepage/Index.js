@@ -1,25 +1,48 @@
 import React from 'react';
-import {Container} from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
+import { Container } from 'react-bootstrap';
 
 import Navigation from '../navigation/Navigation';
 import Welcome from './Welcome';
 import Intro from './Intro';
 import RandomRecipes from './RandomRecipes';
 
-const Index = () => {
-    const styleContainer = {
-        padding: 0,
-        margin: 0
+const styleContainer = {
+    padding: 0,
+    margin: 0
+}
+
+class Index extends React.Component {
+    state = {
+        keyword: ''
     }
 
-    return (
-        <Container style={styleContainer} fluid>
-            <Navigation />
-            <Welcome />
-            <Intro />
-            <RandomRecipes/>
-        </Container>
-    )
+    handleSearch = (keyword) => {
+        this.setState({ keyword: keyword });
+    }
+
+    render() {
+        if (this.state.keyword !== '') {
+            return (
+                <Redirect
+                    to={{
+                        pathname: "/search",
+                        search: `q=${this.state.keyword}`,
+                        state: { query: this.state.keyword }
+                    }}
+                />
+            )
+        }
+
+        return (
+            <Container style={styleContainer} fluid>
+                <Navigation onSubmit={this.handleSearch} />
+                <Welcome />
+                <Intro />
+                {/*<RandomRecipes />*/}
+            </Container>
+        )
+    }
 }
 
 export default Index;

@@ -1,0 +1,18 @@
+.recipeInstruction {
+    margin: 10vh 5vw 0vh 5vw;
+    background-color: #ffffff;
+    padding: 5vh 5vw;
+    border-radius: 10px;
+    font-family: "Tittilium Web", sans-serif;
+}
+
+.title {
+    text-transform: capitalize;
+    font-family: "Amaranth", sans-serif;
+    color: #e63946;
+    margin-bottom: 5vh;
+}
+
+.instruction {
+    line-height: 200%;
+}

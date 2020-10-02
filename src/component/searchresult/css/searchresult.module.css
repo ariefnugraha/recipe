@@ -27,6 +27,18 @@
     font-family: "Amaranth", sans-serif;
 }
 
+.recipeTitle a {
+    color: #000000;
+}
+
+.recipeTitle a:hover {
+    color: #e63946;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+
+
 .stats {
     margin: 5vh 0;
     text-transform: capitalize;

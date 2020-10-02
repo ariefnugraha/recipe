@@ -1,0 +1,26 @@
+.loading {
+    background-color: #ffffff;
+    text-align: center;
+    padding: 10vh 10vw;
+    font-family: "Tittilium Web", sans-serif;
+    text-transform: capitalize;
+}
+
+.title {
+    font-family: "Amaranth", sans-serif;
+    color: #e63946;
+}
+
+.subtitle {
+    font-size: 20px;
+}
+
+.icon {
+    animation: spin 2s linear infinite;
+}
+
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

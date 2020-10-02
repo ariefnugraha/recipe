@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import API from '../../api/base';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import style from './css/searchresult.module.css';
 
@@ -8,22 +8,23 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock, faUser, faMoneyBillAlt } from '@fortawesome/free-regular-svg-icons';
 import { Row, Col } from 'react-bootstrap';
 
-const SearchResult = (props) => {
+const SearchResult = ({query}) => {
     const [recipes, setRecipes] = useState([]);
 
     useEffect(() => {
         API.get('/recipes/complexSearch', {
             params: {
-                apiKey: '276ec49dd63a481ba862b45990caa2dd',
-                query: props.query,
+                apiKey:'276ec49dd63a481ba862b45990caa2dd',
+                query: query,
                 instructionRequired: true,
                 addRecipeInformation: true,
-                number: 5
+                number: 5,
+                sort: 'popularity'
             }
         })
             .then((response) => setRecipes(response.data.results))
             .catch((error) => console.log(error));
-    }, [])
+    }, [query])
 
     let renderRecipes = null;
 
@@ -45,10 +46,24 @@ const SearchResult = (props) => {
                 <div className={style.recipeItem} key={recipe.id}>
                     <Row>
                         <Col xs={3} sm={3} md={3} lg={3} xl={3} className={style.imageContainer}>
-                            <img src={recipe.image} alt={recipe.image} />
+                            <Link to={{
+                                pathname: '/recipe',
+                                search: `?id=${recipe.id}`,
+                                state: { recipeId: recipe.id }
+                            }}>
+                                <img src={recipe.image} alt={recipe.image} />
+                            </Link>
                         </Col>
                         <Col xs={9} sm={9} md={9} lg={9} xl={9} className={style.recipeContent}>
-                            <h5 className={style.recipeTitle}>{recipe.title}</h5>
+                            <h5 className={style.recipeTitle}>
+                                <Link to={{
+                                    pathname: '/recipe',
+                                    search: `?id=${recipe.id}`,
+                                    state: { recipeId: recipe.id }
+                                }}>
+                                    {recipe.title}
+                                </Link>
+                            </h5>
                             <Row className={style.stats}>
                                 <Col xs={6} sm={6} md={3} lg={3} xl={3}>
                                     <FontAwesomeIcon className={style.icon} icon={faClock} size="lg" /> {recipe.readyInMinutes} minutes
@@ -79,7 +94,7 @@ const SearchResult = (props) => {
 
     return (
         <section className={style.searchResult}>
-            <h3 className={style.title}>{`Results for ${props.query}`}</h3>
+            <h3 className={style.title}>{`Results for ${query}`}</h3>
             {renderRecipes}
         </section>
     )

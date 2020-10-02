@@ -2,16 +2,21 @@
     background-color: #e63946;
     color: #ffffff;
     font-family: "Titillium Web", sans-serif;
-    padding: 3vh 5vw;
+    padding: 3vh 5vw;;
 }
 
 .brand {
     color: #ffffff;
+    font-weight: bold;
+}
+
+.brand:hover {
+    color: #ffffff;
+    text-decoration: none;
 }
 
 .form {
     width: 50%;
-    background-color: green;
     margin: 0 auto;
 }
 
@@ -34,4 +39,5 @@
     height: 50px;
     border-left: solid 2px #e63946;
     cursor: pointer;
+    text-transform: capitalize;
 }

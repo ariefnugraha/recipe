@@ -1,0 +1,49 @@
+.recipeOverview {
+    margin: 10vh 5vw 0vh 5vw;
+    background-color: #ffffff;
+    padding: 5vh 5vw;
+    border-radius: 10px;
+    font-family: "Tittilium Web", sans-serif;
+}
+
+.imageContainer img {
+    width: 600px;
+    height: 300px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+.recipeContent {
+    width: 80%;
+    margin: 0 auto;
+    padding: 5vh 0;
+}
+
+.title {
+    text-transform: capitalize;
+    font-family: "Amaranth", sans-serif;
+    color: #e63946;
+}
+
+.summary {
+    line-height: 180%;
+}
+
+.stats {
+    margin-top: 5vh;
+    text-transform: capitalize;
+    margin: 5vh auto;
+}
+
+.statsItem {
+    background-color: #e63946;
+    padding: 2vh 3vw;
+    text-align: center;
+    color: #000000;
+    border-radius: 10px;
+}
+
+.price {
+    font-weight: 600;
+}

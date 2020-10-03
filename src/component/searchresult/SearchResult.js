@@ -9,6 +9,7 @@ import { Row, Col } from 'react-bootstrap';
 
 import Loading from '../loading/Loading';
 import NotFound from '../notfound/NotFound';
+import Warning from '../warning/Warning';
 
 const SearchResult = ({ query }) => {
     const [recipes, setRecipes] = useState([]);
@@ -29,7 +30,11 @@ const SearchResult = ({ query }) => {
                 setResponseStatus(response.status)
                 setRecipes(response.data.results)
             })
-            .catch((error) => console.log(error));
+            .catch((error) => {
+                if(error.response) {
+                    setResponseStatus(error.status)
+                }
+            });
     }, [query])
 
     let renderContent = null
@@ -108,6 +113,10 @@ const SearchResult = ({ query }) => {
 
     if (responseStatus === '') {
         return <Loading />
+    } else if(responseStatus !== '200') {
+        return <Warning />
+    } else if(responseStatus === '200') {
+        return renderContent;
     }
 
     return (

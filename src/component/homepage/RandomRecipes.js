@@ -7,6 +7,7 @@ import { faClock, faUser, faMoneyBillAlt } from '@fortawesome/free-regular-svg-i
 import { Row, Col } from 'react-bootstrap';
 
 import Loading from '../loading/Loading';
+import Warning from '../warning/Warning';
 
 const RandomRecipes = () => {
     const [recipes, setRecipes] = useState([]);
@@ -23,13 +24,19 @@ const RandomRecipes = () => {
                 setResponseStatus(response.status);
                 setRecipes(response.data.recipes)
             })
-            .catch((error) => console.log(error));
+            .catch((error) => {
+                if(error.response) {
+                    setResponseStatus(error.status);
+                }
+            });
     }, []);
 
     let renderRecipes = null;
-    if (recipes.length === 0) {
+    if (responseStatus === '') {
         renderRecipes = <Loading />
-    } else {
+    } else if (responseStatus !== '200') {
+        renderRecipes = <Warning />
+    } else if(responseStatus === '200') {
         renderRecipes = recipes.map((recipe) => {
 
             const rupiahRate = 15000;
@@ -85,14 +92,6 @@ const RandomRecipes = () => {
                             </Col>
                         </Row>
                     </div>
-                    {/*
-                    <div className={style.recipeContent}>
-                        
-                        
-                        
-                        
-                    </div>
-*/}
                 </Col>
             )
         })

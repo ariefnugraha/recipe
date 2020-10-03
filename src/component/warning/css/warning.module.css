@@ -1,11 +1,10 @@
-.notfound {
-    background-color: #ffffff;
-    padding: 10vh 10vw;
-    border-radius: 10px;
+.warning {
+    padding: 10vh 0;
     text-align: center;
+    width: 100%;
     font-family: "Tittilium Web", sans-serif;
+    text-transform: capitalize;
 }
-
 
 .title {
     font-family: "Amaranth", sans-serif;
@@ -18,7 +17,5 @@
 }
 
 .text {
-    text-transform: capitalize;
     font-size: 18px;
 }
-

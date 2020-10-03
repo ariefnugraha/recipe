@@ -6,6 +6,7 @@ import style from './css/recipe.module.css'
 import { Container } from 'react-bootstrap';
 import Navigation from '../navigation/Navigation';
 import Loading from '../loading/Loading';
+import Warning from '../warning/Warning';
 import RecipeOverview from './RecipeOverview';
 import RecipeIngredients from './RecipeIngredients';
 import RecipeInstruction from './RecipeInstruction';
@@ -50,8 +51,13 @@ class Recipe extends React.Component {
                 />
             )
         } else {
-            if (this.state.responseStatus === '') {
-                renderComponent = <Loading />
+            if (this.state.responseStatus !== '200') {
+                if(this.state.responseStatus === '') {
+                    renderComponent = <Loading />
+                } else {
+                    renderComponent = <Warning />
+                }
+            
                 return (
                     <Container fluid className={style.container}>
                         <Navigation onSubmit={this.handleSearch} />
@@ -59,7 +65,6 @@ class Recipe extends React.Component {
                     </Container>
                 )
             } else {
-                console.log(typeof (this.state.recipe))
                 let recipe = this.state.recipe;
                 if (Object.keys(recipe).length === 0 && recipe.constructor === Object) {
                     console.log("gak ada data")

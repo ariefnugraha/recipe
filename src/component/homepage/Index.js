@@ -5,8 +5,7 @@ import { Container } from 'react-bootstrap';
 import Navigation from '../navigation/Navigation';
 import Welcome from './Welcome';
 import Intro from './Intro';
-import Loading from '../loading/Loading';
-//import RandomRecipes from './RandomRecipes';
+import RandomRecipes from './RandomRecipes';
 
 const styleContainer = {
     padding: 0,
@@ -40,8 +39,8 @@ class Index extends React.Component {
                 <Navigation onSubmit={this.handleSearch} />
                 <Welcome onSubmit={this.handleSearch}/>
                 <Intro />
-                <Loading />
-                {/*<RandomRecipes />*/}
+                <RandomRecipes />
+                
             </Container>
         )
     }

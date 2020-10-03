@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import API from '../../api/base';
 import { Link } from 'react-router-dom';
-
 import style from './css/searchresult.module.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock, faUser, faMoneyBillAlt } from '@fortawesome/free-regular-svg-icons';
 import { Row, Col } from 'react-bootstrap';
 
-const SearchResult = ({query}) => {
+import Loading from '../loading/Loading';
+import NotFound from '../notfound/NotFound';
+
+const SearchResult = ({ query }) => {
     const [recipes, setRecipes] = useState([]);
+    const [responseStatus, setResponseStatus] = useState('');
 
     useEffect(() => {
         API.get('/recipes/complexSearch', {
             params: {
-                apiKey:'276ec49dd63a481ba862b45990caa2dd',
+                apiKey: '276ec49dd63a481ba862b45990caa2dd',
                 query: query,
                 instructionRequired: true,
                 addRecipeInformation: true,
@@ -22,14 +25,18 @@ const SearchResult = ({query}) => {
                 sort: 'popularity'
             }
         })
-            .then((response) => setRecipes(response.data.results))
+            .then((response) => {
+                setResponseStatus(response.status)
+                setRecipes(response.data.results)
+            })
             .catch((error) => console.log(error));
     }, [query])
 
+    let renderContent = null
     let renderRecipes = null;
 
     if (recipes.length === 0) {
-        renderRecipes = <p>Recipe Not Found</p>
+        renderContent = <NotFound />
     } else if (recipes.length > 0) {
         renderRecipes = recipes.map((recipe) => {
             const rupiahRate = 15000;
@@ -90,12 +97,22 @@ const SearchResult = ({query}) => {
                 </div>
             )
         })
+
+        renderContent = (
+            <React.Fragment>
+                <h3 className={style.title}>{`Results for ${query}`}</h3>
+                {renderRecipes}
+            </React.Fragment>
+        )
+    }
+
+    if (responseStatus === '') {
+        return <Loading />
     }
 
     return (
         <section className={style.searchResult}>
-            <h3 className={style.title}>{`Results for ${query}`}</h3>
-            {renderRecipes}
+            {renderContent}
         </section>
     )
 }

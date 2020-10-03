@@ -1,37 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import API from '../../api/base';
-
+import { Link } from 'react-router-dom';
 import style from './css/randomrecipes.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock, faUser, faMoneyBillAlt } from '@fortawesome/free-regular-svg-icons';
 import { Row, Col } from 'react-bootstrap';
 
+import Loading from '../loading/Loading';
+
 const RandomRecipes = () => {
     const [recipes, setRecipes] = useState([]);
+    const [responseStatus, setResponseStatus] = useState('');
 
     useEffect(() => {
         API.get('/recipes/random', {
             params: {
                 apiKey: '276ec49dd63a481ba862b45990caa2dd',
-                number: 6
+                number: 8
             }
         })
-            .then((response) => setRecipes(response.data.recipes))
+            .then((response) => {
+                setResponseStatus(response.status);
+                setRecipes(response.data.recipes)
+            })
             .catch((error) => console.log(error));
     }, []);
 
-    let renderRecipes;
+    let renderRecipes = null;
     if (recipes.length === 0) {
-        renderRecipes = <h1>Gak ada</h1>
+        renderRecipes = <Loading />
     } else {
         renderRecipes = recipes.map((recipe) => {
-            const styleRecipe = {
-                backgroundImage: `url('${recipe.image}')`,
-                backgroundRepeat: 'no-repeat',
-                backgroundSize: '100% 100%',
-                minHeight: '700px',
-                margin: '3vh 0vw'
-            }
 
             const rupiahRate = 15000;
             const servings = recipe.servings;
@@ -43,11 +42,29 @@ const RandomRecipes = () => {
             let finalPricePerServingDollar = parsePriceToInt * servings;
 
             return (
-                <Col xs={6} sm={6} md={6} lg={6} xl={6} style={styleRecipe} key={recipe.id}>
+                <Col xs={6} sm={6} md={3} lg={3} xl={3} className={style.recipeItem} key={recipe.id}>
+                    <div className={style.recipeImage}>
+                        <Link to={{
+                            pathname: '/recipe',
+                            search: `?id=${recipe.id}`,
+                            state: { recipeId: recipe.id }
+                        }}>
+                            <img src={recipe.image} alt={recipe.title} />
+                        </Link>
+
+                    </div>
                     <div className={style.recipeContent}>
-                        <h4 className={style.recipeTitle}>{recipe.title}</h4>
+                        <h4 className={style.recipeTitleContainer}>
+                        <Link className={style.recipeTitle} to={{
+                            pathname: '/recipe',
+                            search: `?id=${recipe.id}`,
+                            state: { recipeId: recipe.id }
+                        }}>
+                            {recipe.title.substr(0, 63)}
+                        </Link>
+                        </h4>
                         <Row>
-                            <Col xs={6} sm={6} md={6} lg={6} xl={6}> 
+                            <Col xs={6} sm={6} md={6} lg={6} xl={6}>
                                 <FontAwesomeIcon className={style.icon} icon={faClock} size="lg" /> <p>
                                     {recipe.readyInMinutes} minutes
                                 </p>
@@ -59,29 +76,40 @@ const RandomRecipes = () => {
                                 </p>
                             </Col>
                             <Col xs={6} sm={6} md={6} lg={6} xl={6}>
-                            <FontAwesomeIcon icon={faMoneyBillAlt} size="lg"/>
+                                <FontAwesomeIcon icon={faMoneyBillAlt} size="lg" />
                                 <p>Rp. {finalPricePerPerson} (${parsePriceToInt}) / persons</p>
                             </Col>
                             <Col xs={6} sm={6} md={6} lg={6} xl={6}>
-                            <FontAwesomeIcon icon={faMoneyBillAlt} size="lg"/>
+                                <FontAwesomeIcon icon={faMoneyBillAlt} size="lg" />
                                 <p>Rp. {finalPricePerServing} (${finalPricePerServingDollar}) / serving</p>
                             </Col>
                         </Row>
                     </div>
-
+                    {/*
+                    <div className={style.recipeContent}>
+                        
+                        
+                        
+                        
+                    </div>
+*/}
                 </Col>
             )
         })
     }
 
-    return (
-        <section className={style.recipe}>
-            <h1 className={style.title}>recipe you might want to try</h1>
-            <Row>
-                {renderRecipes}
-            </Row>
-        </section>
-    )
+    if (responseStatus === '') {
+        return <Loading />
+    } else {
+        return (
+            <section className={style.recipe}>
+                <h1 className={style.title}>recipe you might want to try</h1>
+                <Row>
+                    {renderRecipes}
+                </Row>
+            </section>
+        )
+    }
 }
 
 export default RandomRecipes;

@@ -1,5 +1,5 @@
 .recipe {
-    padding: 10vh 10vw;
+    padding: 5vh 10vw;
 }
 
 .title {
@@ -7,26 +7,38 @@
     font-family: "Amaranth", sans-serif;
 }
 
-.recipeContent {
-    background: rgba(0,0,0,0.8);
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    padding: 5vh 5vw;
+.recipeItem {
+    padding: 5vh 0vw;
+}
+
+.recipeImage img {
     width: 100%;
-    color: #ffffff;
     height: 300px;
+}
+
+.recipeContent {
+    padding: 3vh 1vw 3vh 0;
 }
 
 .recipeContent p {
     font-size: 14px;
 }
 
+.recipeTitleContainer {
+    height: 100px;
+}
+
 .recipeTitle {
     text-transform: capitalize;
     font-family: "Amaranth", sans-serif;
     margin-bottom: 3vh;
-    height: 100px;
+    color: #000000;
+}
+
+.recipeTitle:hover {
+    color: #e63946;
+    text-decoration: none;
+    transition: 0.2s;
 }
 
 .icon {

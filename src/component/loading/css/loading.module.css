@@ -1,12 +1,12 @@
 .loading {
-    background-color: #ffffff;
     text-align: center;
     padding: 10vh 10vw;
     font-family: "Tittilium Web", sans-serif;
     text-transform: capitalize;
+    background-color: #ffffff;
 }
 
-.title {
+.title, .quote {
     font-family: "Amaranth", sans-serif;
     color: #e63946;
 }
@@ -23,4 +23,26 @@
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+.iconQuote {
+    margin-top: 5vh;
+    margin-bottom: 3vh;
+}
+
+.quote {
+    font-size: 20px;
+}
+
+.author {
+    font-weight: bold;
+}
+
+.author::before {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 3px;
+    background-color: #e63946;
+    margin: 2vh auto;
 }

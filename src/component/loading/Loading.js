@@ -26,18 +26,24 @@ const Loading = () => {
         }
     ]
 
-    let randomNumber = Math.floor(Math.random() * Math.floor(6));
+    let randomNumber = Math.floor(Math.random() * Math.floor(5));
     let showQuote = quotes[randomNumber];
 
     return (
         <section className={style.loading}>
-            <h1 className={style.title}>Please be excited</h1>
+            <h1 className={style.title}>Prepare to heat your pan</h1>
             <p className={style.subtitle}>we still writing the recipes for you</p>
             <img className={style.icon} src="asset/loading.png" />
             <div className={style.iconQuote}>
-                <FontAwesomeIcon icon={faQuoteRight} size="lg" />
+                <FontAwesomeIcon icon={faQuoteRight} size="2x" />
             </div>
-            <p className={style.quote}>{}</p>
+            <p className={style.quote}>{showQuote.quote}</p>
+            <p className={style.author}>{showQuote.author}</p>
+            <p>
+                <small>
+                    <a href="https://icons8.com/icon/36310/sunny-side-up-eggs">Sunny Side Up Eggs icon by Icons8</a>
+                </small>
+            </p>
         </section>
     )
 }

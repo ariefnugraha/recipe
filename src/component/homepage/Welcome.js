@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
 import style from './css/welcome.module.css';
 
 import Form from 'react-bootstrap/Form';

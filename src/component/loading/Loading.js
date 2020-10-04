@@ -33,7 +33,7 @@ const Loading = () => {
         <section className={style.loading}>
             <h1 className={style.title}>Prepare to heat your pan</h1>
             <p className={style.subtitle}>we still writing the recipes for you</p>
-            <img className={style.icon} src="asset/loading.png" />
+            <img className={style.icon} src="asset/loading.png" alt="loading icon"/>
             <div className={style.iconQuote}>
                 <FontAwesomeIcon icon={faQuoteRight} size="2x" />
             </div>

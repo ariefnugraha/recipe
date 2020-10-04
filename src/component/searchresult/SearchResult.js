@@ -18,7 +18,6 @@ const SearchResult = ({ query }) => {
     useEffect(() => {
         API.get('/recipes/complexSearch', {
             params: {
-                apiKey: '276ec49dd63a481ba862b45990caa2dd',
                 query: query,
                 instructionRequired: true,
                 addRecipeInformation: true,

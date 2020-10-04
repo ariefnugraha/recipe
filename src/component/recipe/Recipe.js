@@ -23,7 +23,6 @@ class Recipe extends React.Component {
         const recipeId = this.props.location.state.recipeId;
         API.get(`/recipes/${recipeId}/information`, {
             params: {
-                apiKey: '276ec49dd63a481ba862b45990caa2dd',
                 includeNutrition: false
             }
         })

@@ -16,7 +16,6 @@ const RandomRecipes = () => {
     useEffect(() => {
         API.get('/recipes/random', {
             params: {
-                apiKey: '276ec49dd63a481ba862b45990caa2dd',
                 number: 8
             }
         })

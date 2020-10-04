@@ -4,10 +4,9 @@
     text-transform: capitalize;
 }
 
-.illustration, .introContent {
+.illustrationContent, .introContent {
     margin: 5vh 0;
 }
-
 
 .background {
     margin: 0 auto;
@@ -60,4 +59,61 @@
 .knife, .spatula, .rolling, .mixer {
     width: 100px;
     height: 100px;
+}
+
+@media only screen and (max-width: 575px) {
+    .background {
+        width: 100%;
+        height: 200px;
+        background: none;
+    }
+
+    .iconContainer {
+        width: 50vw;
+        top: 5vw;
+        left: 20vw;
+    }
+
+    .makeIconContainer {
+        width: 100%;;
+    }
+
+    .knife, .spatula, .rolling, .mixer {
+        display: block;
+        margin: 3vh auto;
+        width: 80px;
+        height: 80px;
+    }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+    .background {
+        background: none;
+        width: 100%;
+        height: 100%;
+    }
+
+    .iconContainer {
+        top: 0vh;
+        left: 30vw;
+    }
+
+    .knife, .spatula, .rolling, .mixer {
+        width: 70px;
+        height: 70px;
+        display: block;
+        margin: 3vh auto;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .background {
+        width: 100%;
+        height: 100%;
+    }
+
+    .iconContainer {
+        top: 8vh;
+        left: 11vw;
+    }
 }

@@ -25,3 +25,22 @@
 .ingredientName {
     color: #e63946;
 }
+
+@media only screen and (max-width: 991px) {
+    .recipeIngredients {
+        padding: 10vh 10vw;
+    }  
+
+    .content {
+        text-align: center;
+    }
+    
+    .imageContainer {
+        margin-bottom: 5vh;
+    }
+
+    .imageContainer img {
+        display: block;
+        margin: 0 auto;
+    }
+}

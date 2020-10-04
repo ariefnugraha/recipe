@@ -25,43 +25,38 @@ const RandomRecipes = () => {
                 setRecipes(response.data.recipes)
             })
             .catch((error) => {
-                if(error.response) {
+                if (error.response) {
                     setResponseStatus(error.status);
                 }
             });
     }, []);
 
     let renderRecipes = null;
-    if (responseStatus === '') {
-        renderRecipes = <Loading />
-    } else if (responseStatus !== '200') {
-        renderRecipes = <Warning />
-    } else if(responseStatus === '200') {
-        renderRecipes = recipes.map((recipe) => {
+    renderRecipes = recipes.map((recipe) => {
 
-            const rupiahRate = 15000;
-            const servings = recipe.servings;
-            let price = recipe.pricePerServing.toString();
-            let newPrice = `${price.substr(0, 2)}.${price.substr(2, 2)}`;
-            let parsePriceToInt = parseInt(newPrice);
-            let finalPricePerPerson = Math.ceil(parsePriceToInt * rupiahRate);
-            let finalPricePerServing = Math.ceil(parsePriceToInt * rupiahRate * servings);
-            let finalPricePerServingDollar = parsePriceToInt * servings;
+        const rupiahRate = 15000;
+        const servings = recipe.servings;
+        let price = recipe.pricePerServing.toString();
+        let newPrice = `${price.substr(0, 2)}.${price.substr(2, 2)}`;
+        let parsePriceToInt = parseInt(newPrice);
+        let finalPricePerPerson = Math.ceil(parsePriceToInt * rupiahRate);
+        let finalPricePerServing = Math.ceil(parsePriceToInt * rupiahRate * servings);
+        let finalPricePerServingDollar = parsePriceToInt * servings;
 
-            return (
-                <Col xs={6} sm={6} md={3} lg={3} xl={3} className={style.recipeItem} key={recipe.id}>
-                    <div className={style.recipeImage}>
-                        <Link to={{
-                            pathname: '/recipe',
-                            search: `?id=${recipe.id}`,
-                            state: { recipeId: recipe.id }
-                        }}>
-                            <img src={recipe.image} alt={recipe.title} />
-                        </Link>
+        return (
+            <Col xs={12} sm={12} md={6} lg={3} xl={3} className={style.recipeItem} key={recipe.id}>
+                <div className={style.recipeImage}>
+                    <Link to={{
+                        pathname: '/recipe',
+                        search: `?id=${recipe.id}`,
+                        state: { recipeId: recipe.id }
+                    }}>
+                        <img src={recipe.image} alt={recipe.title} />
+                    </Link>
 
-                    </div>
-                    <div className={style.recipeContent}>
-                        <h4 className={style.recipeTitleContainer}>
+                </div>
+                <div className={style.recipeContent}>
+                    <h4 className={style.recipeTitleContainer}>
                         <Link className={style.recipeTitle} to={{
                             pathname: '/recipe',
                             search: `?id=${recipe.id}`,
@@ -69,36 +64,37 @@ const RandomRecipes = () => {
                         }}>
                             {recipe.title.substr(0, 63)}
                         </Link>
-                        </h4>
-                        <Row>
-                            <Col xs={6} sm={6} md={6} lg={6} xl={6}>
-                                <FontAwesomeIcon className={style.icon} icon={faClock} size="lg" /> <p>
-                                    {recipe.readyInMinutes} minutes
+                    </h4>
+                    <Row>
+                        <Col xs={6} sm={6} md={6} lg={6} xl={6}>
+                            <FontAwesomeIcon className={style.icon} icon={faClock} size="lg" /> <p>
+                                {recipe.readyInMinutes} minutes
                                 </p>
-                            </Col>
-                            <Col xs={6} sm={6} md={6} lg={6} xl={6}>
-                                <FontAwesomeIcon className={style.icon} icon={faUser} size="lg" />
-                                <p>
-                                    {servings} persons
+                        </Col>
+                        <Col xs={6} sm={6} md={6} lg={6} xl={6}>
+                            <FontAwesomeIcon className={style.icon} icon={faUser} size="lg" />
+                            <p>
+                                {servings} persons
                                 </p>
-                            </Col>
-                            <Col xs={6} sm={6} md={6} lg={6} xl={6}>
-                                <FontAwesomeIcon icon={faMoneyBillAlt} size="lg" />
-                                <p>Rp. {finalPricePerPerson} (${parsePriceToInt}) / persons</p>
-                            </Col>
-                            <Col xs={6} sm={6} md={6} lg={6} xl={6}>
-                                <FontAwesomeIcon icon={faMoneyBillAlt} size="lg" />
-                                <p>Rp. {finalPricePerServing} (${finalPricePerServingDollar}) / serving</p>
-                            </Col>
-                        </Row>
-                    </div>
-                </Col>
-            )
-        })
-    }
+                        </Col>
+                        <Col xs={6} sm={6} md={6} lg={6} xl={6}>
+                            <FontAwesomeIcon icon={faMoneyBillAlt} size="lg" />
+                            <p>Rp. {finalPricePerPerson} (${parsePriceToInt}) / persons</p>
+                        </Col>
+                        <Col xs={6} sm={6} md={6} lg={6} xl={6}>
+                            <FontAwesomeIcon icon={faMoneyBillAlt} size="lg" />
+                            <p>Rp. {finalPricePerServing} (${finalPricePerServingDollar}) / serving</p>
+                        </Col>
+                    </Row>
+                </div>
+            </Col>
+        )
+    })
 
     if (responseStatus === '') {
         return <Loading />
+    } else if (responseStatus !== 200) {
+        return <Warning />
     } else {
         return (
             <section className={style.recipe}>

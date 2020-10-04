@@ -18,15 +18,18 @@ const Intro = () => {
                             <Col className={`${style.foodIcon} ${style.bread}`} xs={6} sm={6} md={6} lg={6} xl={6}>
                                 <FontAwesomeIcon icon={faBreadSlice} size="3x" />
                             </Col>
+                           
                             <Col className={`${style.foodIcon} ${style.bacon}`} xs={6} sm={6} md={6} lg={6} xl={6}>
                                 <FontAwesomeIcon icon={faBacon} size="3x" />
                             </Col>
                             <Col className={`${style.foodIcon} ${style.carrot}`} xs={6} sm={6} md={6} lg={6} xl={6}>
                                 <FontAwesomeIcon icon={faCarrot} size="3x" />
                             </Col>
+                       
                         </Row>
                     </div>
                 </Col>
+
                 <Col className={style.introContent} xs={12} sm={12} md={6} lg={6} xl={6}>
                     <h1 className={style.title}>make food with many diffrent ingredients</h1>
                     <p>from cheese to carrot, we give you recipe with many various ingredient that easy to get</p>

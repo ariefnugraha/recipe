@@ -57,7 +57,7 @@ const SearchResult = ({ query }) => {
             return (
                 <div className={style.recipeItem} key={recipe.id}>
                     <Row>
-                        <Col xs={3} sm={3} md={3} lg={3} xl={3} className={style.imageContainer}>
+                        <Col xs={12} sm={12} md={3} lg={3} xl={3} className={style.imageContainer}>
                             <Link to={{
                                 pathname: '/recipe',
                                 search: `?id=${recipe.id}`,
@@ -66,7 +66,7 @@ const SearchResult = ({ query }) => {
                                 <img src={recipe.image} alt={recipe.image} />
                             </Link>
                         </Col>
-                        <Col xs={9} sm={9} md={9} lg={9} xl={9} className={style.recipeContent}>
+                        <Col xs={12} sm={12} md={9} lg={9} xl={9} className={style.recipeContent}>
                             <h5 className={style.recipeTitle}>
                                 <Link to={{
                                     pathname: '/recipe',
@@ -113,9 +113,9 @@ const SearchResult = ({ query }) => {
 
     if (responseStatus === '') {
         return <Loading />
-    } else if(responseStatus !== '200') {
+    } else if(responseStatus !== 200) {
         return <Warning />
-    } else if(responseStatus === '200') {
+    } else if(responseStatus === 200) {
         return renderContent;
     }
 

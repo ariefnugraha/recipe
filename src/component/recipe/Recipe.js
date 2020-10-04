@@ -10,6 +10,7 @@ import Warning from '../warning/Warning';
 import RecipeOverview from './RecipeOverview';
 import RecipeIngredients from './RecipeIngredients';
 import RecipeInstruction from './RecipeInstruction';
+import Footer from '../navigation/Footer';
 
 class Recipe extends React.Component {
     state = {
@@ -51,7 +52,7 @@ class Recipe extends React.Component {
                 />
             )
         } else {
-            if (this.state.responseStatus !== '200') {
+            if (this.state.responseStatus !== 200) {
                 if(this.state.responseStatus === '') {
                     renderComponent = <Loading />
                 } else {
@@ -92,6 +93,7 @@ class Recipe extends React.Component {
                     <Container fluid className={style.container} style={{ backgroundColor: '#dadada' }}>
                         <Navigation onSubmit={this.handleSearch} />
                         {renderComponent}
+                        <Footer />
                     </Container>
                 )
             }

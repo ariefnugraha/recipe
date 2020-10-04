@@ -1,0 +1,17 @@
+.footer {
+    background-color: #e63946;
+    font-family: "Tittilium Web", sans-serif;
+    text-transform: capitalize;
+    padding: 5vh 10vw;
+    color: #ffffff;
+}
+
+.socialContainer a {
+    color: #ffffff;
+    display: inline-block;
+}
+
+.creditContent {
+    padding-top: 10vh;
+    text-align: center;
+}

@@ -6,6 +6,7 @@ import Navigation from '../navigation/Navigation';
 import Welcome from './Welcome';
 import Intro from './Intro';
 import RandomRecipes from './RandomRecipes';
+import Footer from '../navigation/Footer';
 
 const styleContainer = {
     padding: 0,
@@ -40,7 +41,7 @@ class Index extends React.Component {
                 <Welcome onSubmit={this.handleSearch}/>
                 <Intro />
                 <RandomRecipes />
-                
+                <Footer />
             </Container>
         )
     }

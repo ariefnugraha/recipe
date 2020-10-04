@@ -8,10 +8,10 @@ const RecipeIngredients = ({ ingredients }) => {
         return (
             <Col key={ingredient.id} className={style.ingredientItem} xs={12} sm={12} md={6} lg={6} xl={6}>
                 <Row className={style.ingredientContent}>
-                    <Col xs={3} sm={3} md={3} lg={3} xl={3} className={style.imageContainer}>
+                    <Col xs={12} sm={12} md={12} lg={3} xl={3} className={style.imageContainer}>
                         <img src={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}`} alt={ingredient.image} />
                     </Col>
-                    <Col xs={9} sm={9} md={9} lg={9} xl={9} className={style.content}>
+                    <Col xs={12} sm={12} md={12} lg={9} xl={9} className={style.content}>
                         <h5 className={style.ingredientName}>{ingredient.name}</h5>
                         <p>{ingredient.measures.metric.amount} {ingredient.measures.metric.unitShort}</p>
                     </Col>

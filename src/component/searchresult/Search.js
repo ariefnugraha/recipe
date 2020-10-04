@@ -4,6 +4,7 @@ import { Container } from 'react-bootstrap';
 
 import Navigation from '../navigation/Navigation';
 import SearchResult from './SearchResult';
+import Footer from '../navigation/Footer';
 
 const Search = (props) => {
     const [query, setQuery] = useState(props.location.state.query);
@@ -19,6 +20,7 @@ const Search = (props) => {
         <Container fluid style={styleContainer}>
             <Navigation onSubmit={handleSearch} />
             <SearchResult query={query} />
+            <Footer />
         </Container>
     )
 }

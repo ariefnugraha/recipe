@@ -47,3 +47,9 @@
 .price {
     font-weight: 600;
 }
+
+@media only screen and (max-width: 767px) {
+    .imageContainer img {
+        width: 100%;
+    }
+}
